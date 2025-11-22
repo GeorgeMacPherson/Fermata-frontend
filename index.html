@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fermata Studio | Piano Lessons for Kids in Auckland</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Cabin (main friendly font) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Optional: Inter if you ever want a secondary font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Ken Burns hero background -->
+    <style>
+      .hero-kenburns {
+        background-image: url("/cellomelodica.jpg"); /* adjust path if needed */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        animation: kenburns 30s ease-in-out infinite alternate;
+        transform-origin: center;
+      }
+
+      @keyframes kenburns {
+        0% {
+          transform: scale(1) translate3d(0, 0, 0);
+        }
+        100% {
+          transform: scale(1.12) translate3d(3%, -3%, 0);
+        }
+      }
+    </style>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind custom config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              /* Your Coolors palette */
+              softPink: "#FFADAD", // used as "coral" accent
+              brandPeach: "#FFD6A5",
+              brandLemon: "#FDFFB6",
+              brandMint: "#CAFFBF",
+              brandCyan: "#9BF6FF",
+              brandBlue: "#A0C4FF",
+              brandLilac: "#BDB2FF",
+              softMagenta: "#FFC6FF",
+              offWhite: "#FFFFFC",
+
+              /* Semantic names used in your HTML */
+              ink: "#1F2933", // main dark text
+              charcoal: "#1F2933",
+              foam: "#FFFFFC", // light background
+              paper: "#FFFFFF", // card background
+              teal: "#A0C4FF", // logo bubble / CTA background
+              tealDark: "#6B8CE0", // hover state
+              coral: "#FFD6A5", // new primary accent (gold)
+              gold: "#FDFFB6", // lighter gold for hover
+              mint: "#CAFFBF",
+              "mint-200": "#E3FFE9",
+              slateSoft: "#6B7280", // soft grey text
+            },
+            fontFamily: {
+              display: ["Cabin", "system-ui", "sans-serif"],
+              body: ["Cabin", "system-ui", "sans-serif"],
+            },
+            boxShadow: {
+              card: "0 18px 45px rgba(15,23,42,0.18)",
+            },
+            keyframes: {
+              floatCard: {
+                "0%": { transform: "translate3d(0,0,0)" },
+                "50%": { transform: "translate3d(0,-10px,0)" },
+                "100%": { transform: "translate3d(0,0,0)" },
+              },
+              pulseDot: {
+                "0%,100%": { transform: "scale(1)", opacity: "0.6" },
+                "50%": { transform: "scale(1.4)", opacity: "1" },
+              },
+            },
+            animation: {
+              floatCard: "floatCard 11s ease-in-out infinite",
+              pulseDot: "pulseDot 3s ease-in-out infinite",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="bg-foam text-ink font-body antialiased">
+    <!-- NAV -->
+    <header
+      class="fixed inset-x-0 top-0 z-30 bg-foam/90 backdrop-blur border-b border-slate-200"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4"
+      >
+        <a href="#top" class="flex items-center gap-2">
+          <div
+            class="h-9 w-9 rounded-2xl bg-teal text-paper flex items-center justify-center text-xs font-semibold"
+          >
+            ♪
+          </div>
+          <div class="leading-tight">
+            <p class="font-semibold text-sm md:text-base">Fermata Studio</p>
+            <p class="text-[0.7rem] text-slateSoft">Piano lessons · Auckland</p>
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#how" class="text-slateSoft hover:text-ink">How it works</a>
+          <a href="#learn" class="text-slateSoft hover:text-ink"
+            >What kids learn</a
+          >
+          <a href="#parents" class="text-slateSoft hover:text-ink"
+            >Parents say</a
+          >
+          <a href="#about" class="text-slateSoft hover:text-ink">About</a>
+          <a
+            href="#contact"
+            class="px-4 py-2 rounded-full bg-teal text-paper text-xs font-semibold hover:bg-tealDark transition"
+          >
+            Enquire
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top" class="pt-20 md:pt-24">
+      <!-- HERO -->
+      <!-- HERO SECTION -->
+      <section
+        id="top"
+        class="relative w-full min-h-[80vh] md:min-h-[88vh] flex items-center overflow-hidden"
+      >
+        <!-- Background image with Ken Burns effect -->
+        <div class="absolute inset-0 hero-kenburns"></div>
+
+        <!-- Soft dark overlay so text is readable -->
+        <div class="absolute inset-0 bg-black/40 md:bg-black/40"></div>
+
+        <!-- Content -->
+        <div
+          class="relative max-w-6xl mx-auto px-4 py-12 md:py-16 flex flex-col gap-6 md:gap-8 md:w-3/5"
+        >
+          <p
+            class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/80"
+          >
+            Auckland · Piano Lessons
+            <span class="h-[1px] w-8 bg-white/50"></span>
+            <span
+              class="rounded-full border border-white/40 bg-black/20 px-2 py-0.5 text-[0.65rem]"
+              >Ages 6 and up</span
+            >
+          </p>
+
+          <h1
+            class="font-display text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white drop-shadow-lg"
+          >
+            Piano lessons that help children grow steadily and
+            <span class="text-coral">confidently</span>.
+          </h1>
+
+          <p class="text-base md:text-lg text-white/90 max-w-xl drop-shadow">
+            A calm, structured space in Auckland where children can feel
+            musical, capable, and genuinely enjoy learning.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-coral text-ink font-semibold text-sm hover:bg-gold hover:text-charcoal transition"
+            >
+              Book a free chat
+            </a>
+            <a
+              href="#how"
+              class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white/85 text-charcoal font-medium text-sm hover:bg-white transition"
+            >
+              Explore how it works
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section
+        id="how"
+        class="w-full bg-foam py-12 md:py-16 border-b border-slate-200/60"
+      >
+        <div class="max-w-6xl mx-auto px-4 space-y-8">
+          <div class="max-w-2xl space-y-2">
+            <h2
+              class="font-display text-2xl md:text-3xl font-semibold text-ink"
+            >
+              How lessons work
+            </h2>
+            <p class="text-sm md:text-base text-slateSoft">
+              Simple steps for getting started and keeping things steady.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div
+              class="bg-paper rounded-2xl border border-slateSoft/20 p-5 flex flex-col gap-2"
+            >
+              <p class="text-xs font-semibold uppercase text-slateSoft">
+                Step 1
+              </p>
+              <h3 class="text-sm font-semibold text-ink">
+                Quick chat &amp; match
+              </h3>
+              <p class="text-sm text-slateSoft">
+                We talk about your child, goals, and schedule to check fit.
+              </p>
+            </div>
+            <div
+              class="bg-paper rounded-2xl border border-slateSoft/20 p-5 flex flex-col gap-2"
+            >
+              <p class="text-xs font-semibold uppercase text-slateSoft">
+                Step 2
+              </p>
+              <h3 class="text-sm font-semibold text-ink">First few lessons</h3>
+              <p class="text-sm text-slateSoft">
+                Gentle start: simple songs, posture, listening and rhythm.
+              </p>
+            </div>
+            <div
+              class="bg-paper rounded-2xl border border-slateSoft/20 p-5 flex flex-col gap-2"
+            >
+              <p class="text-xs font-semibold uppercase text-slateSoft">
+                Step 3
+              </p>
+              <h3 class="text-sm font-semibold text-ink">
+                Steady weekly rhythm
+              </h3>
+              <p class="text-sm text-slateSoft">
+                Weekly lessons in term time, with clear, realistic practice.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT KIDS LEARN -->
+      <section
+        id="learn"
+        class="w-full bg-paper py-12 md:py-16 border-b border-slate-200/60"
+      >
+        <div class="max-w-6xl mx-auto px-4 space-y-8">
+          <div class="max-w-2xl space-y-2">
+            <h2
+              class="font-display text-2xl md:text-3xl font-semibold text-ink"
+            >
+              What kids learn at Fermata
+            </h2>
+            <p class="text-sm md:text-base text-slateSoft">
+              A whole-musician approach: not just notes, but ears, hands and
+              confidence.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div
+              class="rounded-2xl bg-foam border border-slateSoft/20 p-5 flex flex-col gap-2"
+            >
+              <h3 class="text-sm font-semibold text-ink">
+                Technique &amp; tone
+              </h3>
+              <p class="text-sm text-slateSoft">
+                Healthy posture, beautiful sound, relaxed hands and fingers.
+              </p>
+              <ul class="mt-2 space-y-1 text-xs text-slateSoft">
+                <li>• Seating &amp; hand shape</li>
+                <li>• Strong but gentle fingers</li>
+                <li>• Expressive dynamics</li>
+              </ul>
+            </div>
+            <div
+              class="rounded-2xl bg-foam border border-slateSoft/20 p-5 flex flex-col gap-2"
+            >
+              <h3 class="text-sm font-semibold text-ink">
+                Reading &amp; rhythm
+              </h3>
+              <p class="text-sm text-slateSoft">
+                Step-by-step reading, so written music stops feeling scary.
+              </p>
+              <ul class="mt-2 space-y-1 text-xs text-slateSoft">
+                <li>• Note reading &amp; patterns</li>
+                <li>• Counting, clapping, moving</li>
+                <li>• Simple theory that makes sense</li>
+              </ul>
+            </div>
+            <div
+              class="rounded-2xl bg-foam border border-slateSoft/20 p-5 flex flex-col gap-2"
+            >
+              <h3 class="text-sm font-semibold text-ink">
+                Creativity &amp; expression
+              </h3>
+              <p class="text-sm text-slateSoft">
+                Games, improvisation and favourite songs to keep music joyful.
+              </p>
+              <ul class="mt-2 space-y-1 text-xs text-slateSoft">
+                <li>• Simple improv &amp; chords</li>
+                <li>• Duets and listening games</li>
+                <li>• Space for the music they love</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PARENTS SAY -->
+      <section
+        id="parents"
+        class="w-full bg-foam py-12 md:py-16 border-b border-slate-200/60"
+      >
+        <div
+          class="max-w-6xl mx-auto px-4 grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-center"
+        >
+          <div class="space-y-3">
+            <h2
+              class="font-display text-2xl md:text-3xl font-semibold text-ink"
+            >
+              What parents say
+            </h2>
+            <p class="text-sm md:text-base text-slateSoft max-w-lg">
+              Fermata Studio has worked with families across Auckland for more
+              than a decade. Lessons are calm, clear, and tailored to each
+              child.
+            </p>
+          </div>
+
+          <div
+            class="bg-mint/60 rounded-3xl border border-mint-200/60 p-6 md:p-7 space-y-4 shadow-card"
+          >
+            <p class="text-sm text-ink leading-relaxed">
+              “George has been teaching piano and music theory to our son and
+              daughter for the past four years, and we couldn’t be more
+              satisfied. He is gentle, organised and incredibly musical, and our
+              children look forward to their lessons every week.”
+            </p>
+            <p class="text-xs font-semibold text-ink/80">The Geron family</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section
+        id="about"
+        class="w-full bg-paper py-12 md:py-16 border-b border-slate-200/60"
+      >
+        <div
+          class="max-w-6xl mx-auto px-4 grid md:grid-cols-[0.9fr,1.1fr] gap-10 items-center"
+        >
+          <!-- LEFT: Text -->
+          <div class="space-y-3">
+            <h2
+              class="font-display text-2xl md:text-3xl font-semibold text-ink"
+            >
+              About Fermata Studio
+            </h2>
+            <p class="text-sm md:text-base text-slateSoft">
+              Fermata Studio is run by George, a professional pianist and
+              teacher based in Auckland. Over more than ten years of teaching,
+              he's helped children move from their very first notes to confident
+              performances and independent playing.
+            </p>
+            <p class="text-sm text-slateSoft">
+              Lessons blend solid classical foundations with space for each
+              student's personality and musical interests.
+            </p>
+          </div>
+
+          <!-- RIGHT: Photo -->
+          <div class="flex justify-center">
+            <img
+              src="/george.jpg"
+              alt="George from Fermata Studio"
+              class="w-full max-w-sm rounded-3xl shadow-[0_18px_45px_rgba(0,0,0,0.18)] object-cover"
+            />
+          </div>
+        </div>
+      </section>
+      <!-- CONTACT -->
+      <section id="contact" class="w-full bg-foam py-12 md:py-16">
+        <div
+          class="max-w-5xl mx-auto px-4 grid md:grid-cols-[1.05fr,0.95fr] gap-10 items-start"
+        >
+          <div class="space-y-4">
+            <h2
+              class="font-display text-2xl md:text-3xl font-semibold text-ink"
+            >
+              Enquire about lessons
+            </h2>
+            <p class="text-sm md:text-base text-slateSoft">
+              Share a few details and we’ll arrange a short call to talk about
+              your child, availability, and next steps.
+            </p>
+            <ul class="text-sm text-slateSoft space-y-1">
+              <li>• Ages 6 and up</li>
+              <li>• Beginners and continuing students welcome</li>
+              <li>• No obligation – just a conversation</li>
+            </ul>
+          </div>
+
+          <form
+            class="bg-paper rounded-2xl border border-slateSoft/20 p-6 space-y-4 shadow-sm"
+          >
+            <div class="space-y-1">
+              <label class="text-xs font-semibold text-ink/80">Your name</label>
+              <input
+                type="text"
+                class="w-full rounded-lg bg-foam border border-slateSoft/30 px-3 py-2 text-sm focus:outline-none focus:border-teal"
+                placeholder="Parent or caregiver name"
+              />
+            </div>
+            <div class="space-y-1">
+              <label class="text-xs font-semibold text-ink/80">Email</label>
+              <input
+                type="email"
+                class="w-full rounded-lg bg-foam border border-slateSoft/30 px-3 py-2 text-sm focus:outline-none focus:border-teal"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div class="space-y-1">
+              <label class="text-xs font-semibold text-ink/80"
+                >Student age &amp; experience</label
+              >
+              <input
+                type="text"
+                class="w-full rounded-lg bg-foam border border-slateSoft/30 px-3 py-2 text-sm focus:outline-none focus:border-teal"
+                placeholder="e.g. 9 years old, beginner"
+              />
+            </div>
+            <div class="space-y-1">
+              <label class="text-xs font-semibold text-ink/80"
+                >Anything else</label
+              >
+              <textarea
+                rows="3"
+                class="w-full rounded-lg bg-foam border border-slateSoft/30 px-3 py-2 text-sm focus:outline-none focus:border-teal resize-none"
+                placeholder="Preferred area, goals, or questions (optional)"
+              ></textarea>
+            </div>
+            <button
+              type="button"
+              class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-lg bg-teal text-paper text-sm font-semibold hover:bg-tealDark transition"
+            >
+              Send enquiry (form not wired up yet)
+            </button>
+            <p class="text-[0.7rem] text-slateSoft">
+              Later we can connect this form to your Python backend to email you
+              and store enquiries securely.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="w-full bg-paper border-t border-slate-200/60">
+      <div
+        class="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slateSoft"
+      >
+        <p>
+          © <span id="year"></span> Fermata Studio · Piano lessons in Auckland
+        </p>
+        <p>
+          Inspired by thoughtful, child-friendly piano teaching, built with HTML
+          &amp; Tailwind.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

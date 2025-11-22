@@ -491,7 +491,7 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
-    <script>
+<script>
   const form = document.getElementById("contact-form");
 
   form.addEventListener("submit", async function (e) {
@@ -510,7 +510,8 @@
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "X-API-KEY": "FermataStudio_2025_Secure_Backend_Key"
           },
           body: JSON.stringify(data)
         }

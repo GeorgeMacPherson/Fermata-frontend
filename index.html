@@ -522,58 +522,35 @@
 <script>
   const form = document.getElementById("contact-form");
   const button = form.querySelector('button[type="submit"]');
-  const confirmation = document.getElementById("contact-confirmation");
-  const tick = document.getElementById("contact-tick");
 
-  form.addEventListener("submit", async function (e) {
+  form.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const data = {
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
       student_info: document.getElementById("student_info").value,
-      message: document.getElementById("message").value,
+      message: document.getElementById("message").value
     };
 
-    // ✅ Instant feedback
+    // ✅ Instant visual confirmation
     button.textContent = "Sent ✓";
     button.classList.remove("bg-teal", "hover:bg-tealDark");
     button.classList.add("bg-green-500");
     button.disabled = true;
 
-    // Show confirmation line + animated tick
-    confirmation.style.opacity = "1";
-    tick.style.opacity = "1";
-    tick.classList.add("tick-pop");
-
-    // Gently fade the form background to show it's “done”
-    form.classList.add("transition-opacity", "duration-700");
-    form.style.opacity = "0.9";
-
-    // Scroll so the confirmation is nicely in view
-    confirmation.scrollIntoView({ behavior: "smooth", block: "center" });
-
-    try {
-      // Fire the request – can be slow, user already got feedback
-      await fetch("https://fermata-backend.onrender.com/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-API-KEY": "FermataStudio_2025_Secure_Backend_Key",
-        },
-        body: JSON.stringify(data),
-      });
-
-      // If you *want* to clear the fields after the backend finishes:
-      form.reset();
-
-    } catch (error) {
-      console.error(error);
-      // Optional: if you want to hint there was an issue, uncomment:
-      // confirmation.querySelector("span:last-child").textContent =
-      //   "Thanks – something went a bit wrong in the background, so if you don’t hear back, please email bonner.george@gmail.com.";
-      // confirmation.classList.replace("text-green-600", "text-amber-600");
-    }
+    // ✅ Fire and forget (keeps sending even if tab closes)
+    fetch("https://fermata-backend.onrender.com/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-KEY": "FermataStudio_2025_Secure_Backend_Key"
+      },
+      body: JSON.stringify(data),
+      keepalive: true
+    }).catch((error) => {
+      console.error("Background send failed:", error);
+    });
   });
 </script>
   </body>

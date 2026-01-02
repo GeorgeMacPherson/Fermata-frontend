@@ -525,73 +525,61 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
-<!-- <script>
+<script>
   const form = document.getElementById("contact-form");
   const button = form.querySelector('button[type="submit"]');
 
-  form.addEventListener("submit", function (e) {
+  const API_URL = "https://fermata-backend.onrender.com/api/contact";
+  const API_KEY = "FermataStudio_2025_Secure_Backend_Key"; // must match API_SECRET on Render
+
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const data = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      student_info: document.getElementById("student_info").value,
-      message: document.getElementById("message").value
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      student_info: document.getElementById("student_info").value.trim(),
+      message: document.getElementById("message").value.trim(),
     };
 
-    // ✅ Instant visual confirmation
+    // Instant UI feedback (no popup)
+    const originalText = button.textContent;
     button.textContent = "Sent ✓";
     button.classList.remove("bg-teal", "hover:bg-tealDark");
     button.classList.add("bg-green-500");
     button.disabled = true;
 
-    // ✅ Fire and forget (keeps sending even if tab closes)
-    fetch("https://fermata-backend.onrender.com/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-API-KEY": "FermataStudio_2025_Secure_Backend_Key"
-      },
-      body: JSON.stringify(data),
-      keepalive: true
-    }).catch((error) => {
-      console.error("Background send failed:", error);
-    });
-  });
- -->
+    try {
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-KEY": FermataStudio_2025_Secure_Backend_Key,
+        },
+        body: JSON.stringify(data),
+      });
 
-  <script>
-  const form = document.getElementById("contact-form");
-  const button = form.querySelector('button[type="submit"]');
+      // If backend rejects / errors, allow retry (still no popup)
+      if (!res.ok) {
+        button.textContent = "Try again";
+        button.classList.remove("bg-green-500");
+        button.classList.add("bg-red-500");
+        button.disabled = false;
+        return;
+      }
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const data = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      student_info: document.getElementById("student_info").value,
-      message: document.getElementById("message").value
-    };
-
-    // ✅ Instant UI feedback
-    button.textContent = "Sent ✓";
-    button.classList.remove("bg-teal", "hover:bg-tealDark");
-    button.classList.add("bg-green-500");
-    button.disabled = true;
-
-    // ✅ Fire-and-forget (survives tab close)
-    const blob = new Blob(
-      [JSON.stringify(data)],
-      { type: "application/json" }
-    );
-
-    navigator.sendBeacon(
-  "https://fermata-backend.onrender.com/api/contact?key=FermataStudio_2025_Secure_Backend_Key",
-  blob
-);
+      // Success: optionally reset the form
+      form.reset();
+    } catch (err) {
+      console.error("Contact submit failed:", err);
+      button.textContent = "Try again";
+      button.classList.remove("bg-green-500");
+      button.classList.add("bg-red-500");
+      button.disabled = false;
+    }
   });
 </script>
+
 </script>
   </body>
 </html>
